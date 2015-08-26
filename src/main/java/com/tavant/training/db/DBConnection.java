@@ -22,9 +22,10 @@ public class DBConnection {
                              "user=root&password=welcome")) {
             String query = "select * from user where id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(0, id);
+            stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            return rs.getString(1);
+            rs.next();
+            return rs.getString(2);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -37,8 +38,8 @@ public class DBConnection {
                              "user=root&password=welcome")) {
             String query = "update user set name=? where id = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
-            stmt.setInt(0, id);
             stmt.setString(1, name);
+            stmt.setInt(2, id);
             stmt.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
