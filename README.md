@@ -1,1 +1,1 @@
-spring trng project
+Design Pattern and Spring training project
